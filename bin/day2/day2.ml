@@ -1,5 +1,4 @@
 open Lib
-open Str
 
 let filename = "input/day2/puzzle.txt"
 
@@ -43,12 +42,34 @@ let process (state:state)  = function
 
 let initial_state = (0,0)
 
-let get_ifelse_init = function
+let get_ifelse_init init = function
   | Some(state) -> state
-  | None -> initial_state
-let final_state = data |> Option.map (List.fold_left (fun acc a -> process acc a) initial_state) |> get_ifelse_init
-
+  | None -> init
+let final_state = data |> Option.map (List.fold_left (fun acc a -> process acc a) initial_state) |> get_ifelse_init initial_state
 
 let _ =
   let result = string_of_int (fst final_state * snd final_state) in
   print_string ("part1:" ^ result)
+
+(*
+  Part 2: Consider aim. 
+*)
+
+(* state = horizon * depth * aim *)
+type state_2 = int * int * int
+
+let horizon ((h, _, _): state_2) = h
+let depth ((_,d,_): state_2) = d
+let aim ((_,_,a):state_2) = a
+
+let process_2 (state:state_2) = function
+  | Forward i -> (horizon state +i, (depth state) + ((aim state) * i), aim state)
+  | Up i -> (horizon state, depth state, aim state - i)
+  | Down i -> (horizon state, depth state, aim state +i)
+
+let initial_state_2 = (0, 0, 0)
+let final_state_2 = data |> Option.map(List.fold_left(fun acc a -> process_2 acc a) initial_state_2) |> get_ifelse_init initial_state_2
+
+let _ =
+  let result = string_of_int (horizon final_state_2 * depth final_state_2) in
+  print_string ("part2:" ^ result)
