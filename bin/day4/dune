@@ -1,3 +1,0 @@
-(executable
- (name day4)
- (libraries core lib Str))

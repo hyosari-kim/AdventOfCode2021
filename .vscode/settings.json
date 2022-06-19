@@ -2,7 +2,7 @@
   "editor.formatOnSave": true,
   "ocaml.sandbox": {
     "kind": "opam",
-    "switch": "aoc"
+    "switch": "aoc-4.14"
   },
   "ocaml.trace.server": "verbose",
   "ocaml-formatter.eval-opam-env": true
