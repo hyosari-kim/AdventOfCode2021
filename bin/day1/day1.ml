@@ -1,6 +1,6 @@
 open Lib
 
-let filename = "input/day1/sample.txt"
+let filename = "input/day1/puzzle.txt"
 
 let lines = Loader.read_file_to_string_list filename
 
