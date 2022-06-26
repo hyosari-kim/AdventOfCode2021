@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "input",
+		},
+		{
+			"path": "lib"
+		},
+		{
+      "path": "bin/day1"
+    },
+    {
+      "path": "bin/day2"
+    },
+	],
+	"settings": {
+		"ocaml.sandbox": {
+			"kind": "opam",
+			"switch": "aoc-4.14"
+		},
+		"ocaml.trace.server": "verbose",
+		"ocaml-formatter.eval-opam-env": true
+	}
+}
